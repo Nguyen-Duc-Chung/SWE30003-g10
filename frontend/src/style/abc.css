@@ -1,0 +1,20 @@
+
+form .requirePrescriptionCategory label .dot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+
+#dot-1:checked~.requirePrescriptionCategory label .one,
+#dot-2:checked~.requirePrescriptionCategory label .two {
+  background: #9b59b6;
+  border-color: #d9d9d9;
+}
+form input[type="radio"] {
+  display: none;
+}
