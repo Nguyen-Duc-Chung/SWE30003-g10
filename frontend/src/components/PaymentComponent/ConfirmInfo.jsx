@@ -210,7 +210,7 @@ const ConfirmInfo = ({ setActiveTab   }) => {
                     <span className="text-md font-semibold text-gray-900">
                         Tổng tiền tạm tính:
                     </span>
-                    <span className="text-md font-bold text-red-600">{formattedTotal} đ</span>
+                    <span className="text-md font-bold text-red-600">{Number(formattedTotal).toLocaleString("vi-VN")} đ</span>
                     </div>
                     <button
                     className="w-full bg-red-600 hover:bg-red-700 transition-colors duration-150 text-white text-md font-normal rounded-lg py-1"

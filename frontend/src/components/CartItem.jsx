@@ -1,6 +1,7 @@
 import { Minus, Plus, Trash } from "lucide-react";
 import { useCartStore } from "../stores/useCartStore";
 
+// In Cart Page
 const CartItem = ({item}) => {
     const { removeFromCart, updateQuantity } = useCartStore();
 
@@ -10,7 +11,6 @@ const CartItem = ({item}) => {
             <div className='shrink-0 md:order-1'>
 				<img className='h-20 md:h-30 w-30 md:w-50  rounded object-cover' src={item.image} />
 			</div>
-            <label className='sr-only'>Choose quantity:</label>
 
             <div className='flex items-center justify-between md:order-3 md:justify-end'>
                 	<div className='flex items-center gap-2'>
@@ -30,7 +30,7 @@ const CartItem = ({item}) => {
 					</div>
 
                     <div className='text-end md:order-4 md:w-32'>
-						<p className='text-base font-bold text-emerald-400'>{item.price} đ </p>
+						<p className='text-base font-bold text-emerald-400'>{item.price.toLocaleString("vi-VN")} đ </p>
 					</div>
             </div>
 
@@ -38,7 +38,6 @@ const CartItem = ({item}) => {
                 <p className='text-base font-medium text-white hover:text-emerald-400 hover:underline'>
 					{item.name}
 				</p>
-                {/* <p className='text-sm text-gray-400'>{item.description}</p> */}
 
 				<div className='flex items-center gap-4'>
 					<button

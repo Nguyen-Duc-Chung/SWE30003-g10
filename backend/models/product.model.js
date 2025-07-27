@@ -33,7 +33,6 @@ const productSchema = new mongoose.Schema(
 			default: false,
 		},
 
-		/*//////////////////////// NEW FIELDS ////////////////////////*/
 		specific_category: {
 			type: String,
 			required: true,
@@ -51,7 +50,14 @@ const productSchema = new mongoose.Schema(
 		requirePrescription: {
 			type: Boolean,
 			default: false,
-		}
+		},
+
+		Inventory_Quantity: {                         // ✅✅✅✅ Thêm INVENTORY_QUANTITY
+            type: Number,
+            // required: true,
+            min: 0,
+            default: 0
+        },
 		
 
     },

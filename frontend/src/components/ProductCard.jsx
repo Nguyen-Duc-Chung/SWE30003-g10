@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import axios from "../lib/axios";
-import { ShoppingCart , Stethoscope , Eye } from "lucide-react";
+import { ShoppingCart , Eye , PackageX } from "lucide-react";
 import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
 import { Link } from "react-router-dom";
@@ -37,7 +37,7 @@ const ProductCard = ({ product }) => {
 		}
 	}, [product._id, product.requirePrescription, user]);
 
-	 const canPurchase = !product.requirePrescription || prescriptionStatus === "approved";
+	 const canPurchase = !product.requirePrescription || prescriptionStatus === "Chấp Thuận";
 
 	return (
 		// <Link to={`/productDetail/${product._id}`}>
@@ -54,7 +54,7 @@ const ProductCard = ({ product }) => {
 						</h5>
 						<div className='mt-2 mb-5 flex items-center justify-between'>
 							<p>
-								<span className='text-xl font-bold '>{product.price} đ</span>
+								<span className='text-xl font-bold '>{product.price.toLocaleString("vi-VN")} đ</span>
 							</p>
 						</div>
 		
@@ -65,14 +65,22 @@ const ProductCard = ({ product }) => {
 
 				<div className='flex-column space-y-1 items-center justify-center px-5 pb-5'>
 					{canPurchase ? (
-					<button
-						className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
-						text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
-						onClick={handleAddToCart}
-					>
-						<ShoppingCart size={22} className='mr-2' />
-						Thêm vào giỏ
-					</button>
+					<>			
+						<button
+							className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
+							text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
+							onClick={handleAddToCart}
+						>
+							<ShoppingCart size={22} className='mr-2' />
+							Thêm vào giỏ
+						</button>
+						<div className="flex items-center w-full justify-center rounded-lg bg-[#878787] px-5 py-2 text-center text-[15px] font-medium
+							text-white focus:outline-none focus:ring-4 " >
+                            <PackageX size={22} className='mr-2' />
+							Sản phẩm hết hàng
+
+						</div>
+					</>
 					) : (
 					<>
 						{/* <div className="text-xs text-red-400 text-center">

@@ -21,32 +21,32 @@ const ProductsList = () => {
 							scope='col'
 							className='px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider'
 						>
-							Product
+							Sản Phẩm
 						</th>
 						<th
 							scope='col'
 							className='px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider'
 						>
-							Price
+							Giá
 						</th>
 						<th
 							scope='col'
 							className='px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider'
 						>
-							Category
+							Phân Loại
 						</th>
 
 						<th
 							scope='col'
 							className='px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider'
 						>
-							Featured
+							Đánh Giá Cao
 						</th>
 						<th
 							scope='col'
 							className='px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider'
 						>
-							Actions
+							Xóa
 						</th>
 					</tr>
 				</thead>
@@ -69,7 +69,7 @@ const ProductsList = () => {
 								</div>
 							</td>
 							<td className='px-6 py-4 whitespace-nowrap'>
-								<div className='text-sm text-gray-300'>${product.price.toFixed(2)}</div>
+								<div className='text-sm text-gray-300'>{product.price.toLocaleString("vi-VN")} đ</div>
 							</td>
 							<td className='px-6 py-4 whitespace-nowrap'>
 								<div className='text-sm text-gray-300'>{product.category}</div>

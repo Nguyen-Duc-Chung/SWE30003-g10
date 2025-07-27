@@ -24,6 +24,7 @@ const CreateProductForm = () => {
     name: "",
     description: "",
     price: "",
+    Inventory_Quantity: "", // ✅✅✅✅ Thêm dòng này
     category: "",
     specific_category: "",
     image: "",
@@ -34,13 +35,16 @@ const CreateProductForm = () => {
 
   const { createProduct, loading } = useProductStore();
 
+  const [formattedPrice, setFormattedPrice] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(newProduct);
     try{
     await createProduct({...newProduct, subject: selectedSubjects });
-    setNewProduct({name: "", description: "", price: "", category: "", specific_category: "", 
+    setNewProduct({name: "", description: "", price: 0, category: "", specific_category: "", 
                    brand: "", image: "", manufacturing_country: "", requirePrescription: "",
+                   Inventory_Quantity: "" // ✅✅✅✅ Thêm dòng này
     });
     setSelectedSubjects([]);
 
@@ -131,19 +135,48 @@ const CreateProductForm = () => {
                 className='mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500   focus:border-emerald-500'
               />
 				  </div>
+          
+          <div>
+            <label htmlFor='price' className='block text-sm font-medium text-gray-300'>
+              Giá (VNĐ)
+            </label>
+            <div className="relative">
+              <input
+                type='text'
+                id='price'
+                name='price'
+                value={formattedPrice}
+                onChange={(e) => {
+                  const rawValue = e.target.value.replace(/[^0-9]/g, ''); // keep digits only
+                  const numberValue = Number(rawValue);
+
+                  setFormattedPrice(rawValue ? numberValue.toLocaleString('vi-VN') : '');
+                  setNewProduct({ ...newProduct, price: numberValue });
+                }}
+                inputMode="numeric"
+                
+                className='mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 pr-10 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500'
+                placeholder='Nhập giá sản phẩm (VNĐ)'
+              />
+              <span className="absolute inset-y-0 right-3 flex items-center text-white pointer-events-none">₫</span>
+            </div>
+          </div>
 
           <div>
-              <label htmlFor='price' className='block text-sm font-medium text-gray-300'>
-                Giá
+              <label htmlFor='quantity' className='block text-sm font-medium text-gray-300'>
+                Số lượng (Quantity)
               </label>
               <input
-                type='number' id='price' name='price'
-                value={newProduct.price}
-                onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
-                step='0.01'
+                type='number'
+                id='quantity'
+                name='quantity'
+                value={newProduct.Inventory_Quantity}
+                onChange={(e) => setNewProduct({ ...newProduct, Inventory_Quantity: e.target.value })}
+                min='0'
                 className='mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500  focus:border-emerald-500'
               />
-				  </div>
+          </div>
+
 
           <div className=" categoryInput flex flex-wrap justify-between " >     
                 <div>
@@ -155,7 +188,7 @@ const CreateProductForm = () => {
                       onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}
                       className='mt-1 block  bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none   focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500'
                     >
-                      <option value=''>Select a category</option>
+                      <option value=''>Chọn danh mục</option>
                       {categories.map((category) => (
                         <option key={category} value={category}>
                           {category}
@@ -174,7 +207,7 @@ const CreateProductForm = () => {
                       disabled={!newProduct.category}
                       className='mt-1 block  bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none   focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500'
                     >
-                      <option value=''>Select a specific category</option>
+                      <option value=''>Chọn danh mục chi tiết</option>
                           {specificOptions.map((item) => (
                             <option key={item} value={item}>
                                 {item}
@@ -231,7 +264,7 @@ const CreateProductForm = () => {
                 onChange={(e) => setNewProduct({ ...newProduct, manufacturing_country: e.target.value })}
                 className='mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none   focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500'  
              >
-              <option value='' >Select a manufacturing country</option>
+              <option value='' >Hãy chọn quốc gia sản xuất</option>
               {countries.map((country) => (
                 <option key={country} value={country}  >
                   {country}
@@ -284,7 +317,7 @@ const CreateProductForm = () => {
                 className='cursor-pointer bg-gray-700 py-2 px-3 border border-gray-600 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-300 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500'
               >
                 <Upload className='h-5 w-5 inline-block mr-2' />
-                Upload Image
+                Tải ảnh lên
               </label>
               {newProduct.image && <span className='ml-3 text-sm text-gray-400'>Image uploaded </span>}
 				  </div>
@@ -297,12 +330,12 @@ const CreateProductForm = () => {
             {loading ? (
               <>
                 <Loader className='mr-2 h-5 w-5 animate-spin' aria-hidden='true' />
-                Loading...
+                Đang tải...
               </>
             ) : (
               <>
                 <PlusCircle className='mr-2 h-5 w-5' />
-                Create Product
+                Tạo Sản Phẩm
               </>
             )}
           </button>

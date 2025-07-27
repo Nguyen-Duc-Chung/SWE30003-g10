@@ -99,12 +99,12 @@ const Navbar = () => {
             <Link to='/' className='text-5xl font-black text-[#2a4427] items-center space-x-2 flex'
             style={{ fontFamily: "'Noto Serif', serif" }}
             >
-                Long Chau
+                Long Châu
             </Link>
 
             <nav className='flex flex-wrap items-center gap-4' >
                 <Link to={"/"}	className='text-black hover:text-emerald-400 transition duration-300 ease-in-out'
-                >Home
+                >Trang chủ
                 </Link>
 
                 {user && (
@@ -113,7 +113,7 @@ const Navbar = () => {
                     className='relative group text-black hover:text-emerald-400 transition duration-300 ease-in-out '
                     >
                         <ShoppingCart className='inline-block mr-1 group-hover:text-emerald-400' size={20} />
-                        <span className='hidden sm:inline'>Cart</span>
+                        <span className='hidden sm:inline'>Giỏ</span>
                     { cart.length > 0 && <span  
                             className='absolute -top-2 -left-2 bg-emerald-500 text-white rounded-full px-2 py-0.5 
                                         text-xs group-hover:bg-emerald-400 transition duration-300 ease-in-out'
@@ -139,7 +139,7 @@ const Navbar = () => {
                     onClick={logout}
                     >
                         <LogOut size={18} />
-                        <span className='hidden sm:inline ml-2'>Log Out</span>
+                        <span className='hidden sm:inline ml-2'>Đăng Xuất</span>
                     </button>
 
                 ) : (
@@ -150,7 +150,7 @@ const Navbar = () => {
                                         rounded-md flex items-center transition duration-300 ease-in-out'
                         >
                         <UserPlus className='mr-2' size={18} />
-                        Sign Up
+                        Đăng Ký
                         </Link>
                         <Link 
                         to={"/login"}  
@@ -158,7 +158,7 @@ const Navbar = () => {
                                         rounded-md flex items-center transition duration-300 ease-in-out'
                         >
                         <LogIn className='mr-2' size={18} />
-                        Log In
+                        Đăng Nhập
                         </Link>
                     </>
                 )}

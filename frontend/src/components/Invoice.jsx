@@ -48,21 +48,21 @@ const Invoice = () => {
       <div className="px-[34px] pt-8 pb-5">
         <div className="flex flex-row justify-between gap-10">
           <div>
-            <div className="text-[15px] font-semibold tracking-widest mb-1">INVOICE TO:</div>
+            <div className="text-[15px] font-semibold tracking-widest mb-1">Hóa Đơn Tới:</div>
             <div className="font-bold text-[15px] mb-[2px]">{invoiceData?.customerName}</div>
             <div className="text-[14px] w-[60%] opacity-80 leading-[1.4]">
               {invoiceData?.address}
             </div>
           </div>
           <div className="flex flex-col items-end">
-            <div className="text-[32px] font-bold text-emerald-500 tracking-wider mb-1">INVOICE</div>
+            <div className="text-[35px] font-bold text-emerald-500 mb-1">Hóa Đơn</div>
             <div className="text-[14px] font-bold leading-5 flex flex-col gap-1">
               <div>
-                <span className="text-[#222] font-bold">Invoice No: </span>
-                <span className="font-normal ml-2">{invoiceData?._id?.slice(-6)}</span>
+                <span className="text-[#222] font-bold">Hóa Đơn Số:</span>
+                <span className="font-normal ml-2 block ">{invoiceData?._id?.slice(-6)}</span>
               </div>
               <div>
-                <span className="text-[#222] font-bold">Date: </span>
+                <span className="text-[#222] font-bold">Ngày/Tháng/Năm: </span>
                 <span className="font-normal ml-2">{new Date(invoiceData?.createdAt).toLocaleDateString()}</span>
               </div>
             </div>
@@ -72,11 +72,11 @@ const Invoice = () => {
         {/* Table Header */}
         <div className="mt-8">
           <div className="flex w-full bg-[#14213d] rounded-t-[6px] overflow-hidden text-white text-[15px] font-semibold">
-            <div className="w-[60px] px-3 py-2 text-center">NO.</div>
-            <div className="flex-1 px-3 py-2">ITEM DESCRIPTION</div>
-            <div className="w-[92px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">PRICE</div>
-            <div className="w-[54px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">QTY</div>
-            <div className="w-[80px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">TOTAL</div>
+            <div className="w-[60px] px-3 py-2 text-center">STT</div>
+            <div className="flex-1 px-3 py-2">Mô tả sản phẩm</div>
+            <div className="w-[92px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">Giá</div>
+            <div className="w-[54px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">S.Lượng</div>
+            <div className="w-[80px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">Thành Tiền</div>
           </div>
 
           {invoiceData?.cartItems?.map((item, i) => (
@@ -105,16 +105,16 @@ const Invoice = () => {
           </div>
           <div className="w-[230px] flex flex-col gap-2 ml-auto">
             <div className="flex justify-between text-[15px] mb-1">
-              <span>SUB TOTAL:</span>
+              <span>Tổng phụ:</span>
               <span className="font-bold">{invoiceData?.totalAmount?.toLocaleString()} đ</span>
             </div>
             <div className="flex justify-between text-[15px] mb-1">
-              <span>TAX:</span>
+              <span>Thuế:</span>
               <span className="font-bold">0.00%</span>
             </div>
             <div className="flex justify-end">
               <div className="flex items-center bg-emerald-500 rounded-lg px-4 py-2 font-semibold text-[18px] text-white shadow-md mt-2">
-                TOTAL: {invoiceData?.totalAmount?.toLocaleString()} đ
+                Tổng tiền: {invoiceData?.totalAmount?.toLocaleString()} đ
               </div>
             </div>
           </div>

@@ -19,13 +19,13 @@ const LoginPage = () => {
   return (
     <>
     <div className='flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
-        <h2 className='mt-6 text-center text-3xl font-extrabold text-emerald-400'>Create your account</h2>
 
-        <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
+        <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-gray-800  py-8 px-4 shadow sm:rounded-lg sm:px-10 '>
+        <h2 className='my-6 text-center text-3xl font-extrabold text-emerald-400'>Đăng nhập Tài khoản của bạn</h2>
           <form onSubmit={handleSubmit} className='space-y-6'>
               <div>
                   <label htmlFor='email' className='block text-sm font-medium text-gray-300'>
-                    Email address
+                    Địa Chỉ Email 
                   </label>
                   <div className='mt-1 relative rounded-md shadow-sm'>
                     <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
@@ -44,7 +44,7 @@ const LoginPage = () => {
 
               <div>
                   <label htmlFor='password' className='block text-sm font-medium text-gray-300'>
-                    Password
+                    Mật Khẩu
                   </label>
                   <div className='mt-1 relative rounded-md shadow-sm'>
                     <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
@@ -73,12 +73,12 @@ const LoginPage = () => {
 							{loading ? (
 								<>
 									<Loader className='mr-2 h-5 w-5 animate-spin' aria-hidden='true' />
-									Loading...
+									Đang tải...
 								</>
 							) : (
 								<>
 									<LogIn className='mr-2 h-5 w-5' aria-hidden='true' />
-									Login
+									Đăng Nhập
 								</>
 							)}
 						</button>
@@ -86,9 +86,9 @@ const LoginPage = () => {
           </form>
           
 					<p className='mt-8 text-center text-sm text-gray-400'>
-						Not a member?{" "}
+						Không phải thành viên?{" "}
 						<Link to='/signup' className='font-medium text-emerald-400 hover:text-emerald-300'>
-							Sign up now <ArrowRight className='inline h-4 w-4' />
+							Đăng ký ngay <ArrowRight className='inline h-4 w-4' />
 						</Link>
 					</p>
         </div>

@@ -11,10 +11,10 @@ import { useProductStore } from "../stores/useProductStore";
 
 
 const tabs = [
-    { id: "create", label: "Create Product", icon: PlusCircle },
-	{ id: "products", label: "Products", icon: ShoppingBasket },
+    { id: "create", label: "Tạo Sản Phẩm", icon: PlusCircle },
+	{ id: "products", label: "Sản Phẩm", icon: ShoppingBasket },
 	{ id: "analytics", label: "Analytics", icon: BarChart },
-    { id: "prescriptions", label: "Prescriptions", icon: ClipboardPlus },
+    { id: "prescriptions", label: "Đơn Thuốc", icon: ClipboardPlus },
 ];
 
 

@@ -57,21 +57,21 @@ const PrescriptionsTab = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Prescriptions</h2>
+      {/* <h2 className="text-2xl font-bold mb-4">Prescriptions</h2> */}
 
       {loading ? (
-        <p className="text-center py-4">Loading...</p>
+        <p className="text-center py-4">Đang tải...</p>
       ) : (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg md:max-w-7xl mx-auto">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" className="px-6 py-3">Prescription ID</th>
-                <th scope="col" className="px-6 py-3">Customer</th>
-                <th scope="col" className="px-6 py-3 hidden md:table-cell">Contact</th>
-                <th scope="col" className="px-6 py-3">Posted At</th>
-                <th scope="col" className="px-6 py-3">Status</th>
-                <th scope="col" className="px-6 py-3">Actions</th>
+                <th scope="col" className="px-6 py-3">Mã Đơn Thuốc</th>
+                <th scope="col" className="px-6 py-3">Khách Hàng</th>
+                <th scope="col" className="px-6 py-3 hidden md:table-cell">Liên Hệ</th>
+                <th scope="col" className="px-6 py-3">Ngày Đăng</th>
+                <th scope="col" className="px-6 py-3">Trạng Thái</th>
+                <th scope="col" className="px-6 py-3">Chi Tiết</th>
               </tr>
             </thead>
             <tbody>
@@ -98,9 +98,9 @@ const PrescriptionsTab = () => {
                   <td className="px-6 py-4">
                     <span
                       className={`px-2 py-1 rounded text-xs font-medium ${
-                        prescription.status === 'approved'
+                        prescription.status === 'Chấp Thuận'
                           ? 'bg-green-100 text-green-700'
-                          : prescription.status === 'rejected'
+                          : prescription.status === 'Từ Chối'
                           ? 'bg-red-100 text-red-700'
                           : 'bg-yellow-100 text-yellow-700'
                       }`}

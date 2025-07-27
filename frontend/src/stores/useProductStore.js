@@ -15,6 +15,7 @@ export const useProductStore = create((set) => ({
 				products: [...prevState.products, response.data],
 				loading: false,
 			}));
+			toast.success("Đã Tạo Sản Phẩm Thành Công!"); //  success toast added here
 		} catch (error) {
 			toast.error(error.response.data.error || "Failed to create products");
 			console.log("Error creating product:", error);

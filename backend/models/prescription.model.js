@@ -32,8 +32,8 @@ const prescriptionSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "approved", "rejected"],
-      default: "pending",
+      enum: ["Đang Xử Lý", "Chấp Thuận", "Từ Chối"],
+      default: "Đang Xử Lý",
     },
   },
   { timestamps: true }

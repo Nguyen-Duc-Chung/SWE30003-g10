@@ -120,28 +120,6 @@ const ProductDetailPage = () => {
                     <p className="text-gray-800">{product.description}</p>
                 </div>
 
-                {/* { !product.requirePrescription ? ( 
-                    <div className="flex space-x-4">
-                      <button className="flex-1 bg-blue-600 text-white py-3 rounded-lg text-lg font-medium">
-                        Chọn mua
-                      </button>
-                      <button className="flex-1 border border-gray-300 text-gray-700 py-3 rounded-lg text-lg font-medium">
-                        Thêm vào giỏ hàng
-                      </button>
-                    </div>
-                ) : (
-                  <Link to={"/prescription"} state={{ product }} >
-                    <div className="flex space-x-4">
-                      <button
-                        className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
-                        text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
-                      >
-                        <Stethoscope size={22} className='mr-2' />
-                        Gửi Đơn thuốc
-                      </button>
-                    </div>
-                  </Link>
-                )} */}
 
                 {canPurchase ? (
                   <>

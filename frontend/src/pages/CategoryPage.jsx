@@ -3,7 +3,7 @@ import { useProductStore } from "../stores/useProductStore.js";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard.jsx";
 import '../style/category_page.css'
-import { ArrowDown, ArrowUp , Funnel } from 'lucide-react';
+import { ArrowDown, ArrowUp, Funnel } from 'lucide-react';
 
 
 const CategoryPage = () => {
@@ -44,12 +44,19 @@ const CategoryPage = () => {
   const [selectedDrugTypes, setSelectedDrugTypes] = useState(['all']);
 
   const handleDrugToggle = (value) => {
-    setSelectedDrugTypes(prev =>
-      prev.includes(value)
-        ? prev.filter(v => v !== value)
-        : [...prev, value]
-    );
+    if (value === 'all') {
+      setSelectedDrugTypes(['all']);
+    } else {
+      setSelectedDrugTypes((prev) => {
+        const newSelection = prev.includes(value)
+          ? prev.filter((v) => v !== value)
+          : [...prev.filter((v) => v !== 'all'), value];
+
+        return newSelection.length > 0 ? newSelection : ['all'];
+      });
+    }
   };
+
 
   // Usage target options
   const targets = [
@@ -64,30 +71,41 @@ const CategoryPage = () => {
   const [showAllTargets, setShowAllTargets] = useState(false);
   const [selectedTargets, setSelectedTargets] = useState(['all']);
 
-  const handleTargetToggle = (value) => {
-    setSelectedTargets(prev =>
-      prev.includes(value)
-        ? prev.filter(v => v !== value)
-        : [...prev, value]
-    );
-  };
-
   // ─────────────────────────────────────────────────────────────────
   // Compute filteredProducts based on price, prescription, and targets
   // ─────────────────────────────────────────────────────────────────
+  const handleTargetToggle = (value) => {
+    if (value === 'all') {
+      // If "Tất cả" is clicked, deselect all specific targets
+      setSelectedTargets(['all']);
+    } else {
+      setSelectedTargets((prev) => {
+        const newSelection = prev.includes(value)
+          ? prev.filter((v) => v !== value)
+          : [...prev.filter((v) => v !== 'all'), value];
+
+        // If none selected after toggle, default back to 'all'
+        return newSelection.length > 0 ? newSelection : ['all'];
+      });
+    }
+  };
+
+ 
   const filteredProducts = shouldFilter ? products
-    // 1) Price filter
-    .filter(p => {
-      if (!selectedPrice || selectedPrice === 'all') return true;
-      const price = Number(p.price);
-      switch (selectedPrice) {
-        case 'under_100':   return price < 100;
-        case '100_300':     return price >= 100 && price <= 300 ;
-        case '300_500':     return price > 300 && price <= 500 ; 
-        case 'over_500':    return price > 500 ;
-        default:            return true;
-      }
-    })
+
+  // 1) Price filter
+  .filter(p => {
+    if (!selectedPrice || selectedPrice === 'all') return true;
+    const price = Number(p.price);
+    switch (selectedPrice) {
+      case 'under_100':   return price < 100_000;
+      case '100_300':     return price >= 100_000 && price <= 300_000;
+      case '300_500':     return price > 300_000 && price <= 500_000;
+      case 'over_500':    return price > 500_000;
+      default:            return true;
+    }
+  })
+
     // 2) Prescription filter
     .filter(p => {
       if (selectedDrugTypes.includes('all')) return true;
@@ -170,20 +188,20 @@ const CategoryPage = () => {
                 </div>
                 {drugOpen && (
                   <div className="mt-3 space-y-2">
-                    {drugTypes.map(opt => (
-                      <label
-                        key={opt.value}
-                        className="flex items-center space-x-2 text-white "
-                      >
-                        <input
-                          type="checkbox"
-                          checked={selectedDrugTypes.includes(opt.value)}
-                          onChange={() => handleDrugToggle(opt.value)}
-                          className="h-4 w-4 text-blue-500 border-gray-300 rounded"
-                        />
-                        <span>{opt.label}</span>
-                      </label>
-                    ))}
+                      {drugTypes.map(opt => (
+                        <label
+                          key={opt.value}
+                          className="flex items-center space-x-2 text-white "
+                        >
+                          <input
+                            type="checkbox"
+                            checked={selectedDrugTypes.includes(opt.value)}
+                            onChange={() => handleDrugToggle(opt.value)}
+                            className="h-4 w-4 text-blue-500 border-gray-300 rounded"
+                          />
+                          <span>{opt.label}</span>
+                        </label>
+                      ))}
                   </div>
                 )}
               </div>
@@ -203,34 +221,21 @@ const CategoryPage = () => {
                 </div>
                 {targetsOpen && (
                   <div className="mt-3 space-y-2">
-                    {(showAllTargets ? targets : targets.slice(0, 1)).map(opt => (
-                      <label
-                        key={opt.value}
-                        className="flex items-center space-x-2"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={selectedTargets.includes(opt.value)}
-                          onChange={() => handleTargetToggle(opt.value)}
-                          className="h-4 w-4 text-blue-500 border-gray-300 rounded "
-                        />
-                        <span className="text-white" >{opt.label}</span>
-                      </label>
-                    ))}
-
-                    {targets.length > 1 && (
-                      <button
-                        onClick={() => setShowAllTargets(s => !s)}
-                        className="flex items-center space-x-1 text-sm font-medium mt-1"
-                      >
-                        <span>{showAllTargets ? 'Thu gọn' : 'Xem thêm'}</span>
-                        {showAllTargets ? (
-                          <ArrowUp className="h-4 w-4" />
-                        ) : (
-                          <ArrowDown className="h-4 w-4" />
-                        )}
-                      </button>
-                    )}
+                      {targets.map(opt => (
+                          <label
+                            key={opt.value}
+                            className="flex items-center space-x-2"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={selectedTargets.includes(opt.value)}
+                              onChange={() => handleTargetToggle(opt.value)}
+                              className="h-4 w-4 text-blue-500 border-gray-300 rounded "
+                            />
+                            <span className="text-white">{opt.label}</span>
+                          </label>
+                        ))}
+                    
                   </div>
                 )}
               </div>

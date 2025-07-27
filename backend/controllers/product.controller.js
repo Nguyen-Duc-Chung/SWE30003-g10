@@ -57,7 +57,10 @@ export const getFeaturedProducts = async (req, res) => {
 export const createProduct = async (req, res) => {
     try{
 
-        const {brand,name, description, price, category,specific_category, image, manufacturing_country, requirePrescription, subject} = req.body;
+        const { brand,name, description, price, category,
+                specific_category, image, manufacturing_country, 
+                requirePrescription, subject, Inventory_Quantity // ✅✅✅✅ Thêm Inventory_Quantity
+            } = req.body;
 
         let cloudinaryResponse = null;
 
@@ -75,7 +78,8 @@ export const createProduct = async (req, res) => {
             specific_category,
             manufacturing_country,
             requirePrescription,
-            subject
+            subject,
+            Inventory_Quantity // ✅✅✅✅ Thêm Inventory_Quantity
         });
 
         res.status(201).json(product);
@@ -196,3 +200,21 @@ async function updateFeaturedProductsCache() {
 		console.log("error in update cache function");
 	}
 }
+
+// ✅✅✅✅ NEW CODE FOR UPDATE INVENTORY QUANTITIES
+export const updateInventoryQuantities = async (req, res) => {
+  try {
+    const { cartItems } = req.body;
+
+    for (const item of cartItems) {
+      await Product.findByIdAndUpdate(item.productId, {
+        $inc: { Inventory_Quantity: -item.quantity }
+      });
+    }
+
+    res.status(200).json({ message: "Inventory updated" });
+  } catch (err) {
+    console.error("Error updating inventory:", err.message);
+    res.status(500).json({ message: "Failed to update inventory" });
+  }
+};

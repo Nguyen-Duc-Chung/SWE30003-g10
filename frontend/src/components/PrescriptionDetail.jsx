@@ -7,7 +7,7 @@ const PrescriptionDetail = ({ prescription, onBack, onStatusChange }) => {
         onClick={onBack}
         className="mb-4 text-sm text-blue-600 hover:underline"
       >
-        ← Back to List
+        ← Quay lại trang
       </button>
 
       <h2 className="text-2xl font-bold mb-4">Prescription Detail</h2>
@@ -30,16 +30,16 @@ const PrescriptionDetail = ({ prescription, onBack, onStatusChange }) => {
       <div className="flex justify-center mt-4 gap-4">
         <button 
           className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
-          onClick={() => onStatusChange(prescription._id, 'approved')}
+          onClick={() => onStatusChange(prescription._id, 'Chấp Thuận')}
         >
-           Approve
+           Chấp Thuận
         </button>
 
         <button
           className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
-          onClick={() => onStatusChange(prescription._id, 'rejected')}
+          onClick={() => onStatusChange(prescription._id, 'Từ Chối')}
           >
-            Reject
+            Từ Chối
         </button>
       </div>
     </div>

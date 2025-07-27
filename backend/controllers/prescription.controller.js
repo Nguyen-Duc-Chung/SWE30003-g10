@@ -64,7 +64,7 @@ export const updatePrescriptionStatus = async (req, res) => {
 
     console.log("PATCH request to update prescription:", { id, status });
 
-    if (!["pending", "approved", "rejected"].includes(status)) {
+    if (!["Đang Xử Lý", "Chấp Thuận", "Từ Chối"].includes(status)) {
       console.warn("Invalid status value:", status);
       return res.status(400).json({ message: "Invalid status value" });
     }

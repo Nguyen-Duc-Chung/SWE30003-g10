@@ -37,6 +37,7 @@ const handleChange = (e) => {
         <motion.div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
       
           <div className='bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10'>
+            <h2 className='my-6 text-center text-3xl font-extrabold text-emerald-400'>Tạo Tài khoản của bạn</h2>
               <form onSubmit={handleSubmit} className='space-y-6'>
 
                 <div>
@@ -146,12 +147,12 @@ const handleChange = (e) => {
                   {loading ? (
                     <>
                       <Loader className='mr-2 h-5 w-5 animate-spin' aria-hidden='true' />
-                      Loading...
+                      Đang tải...
                     </>
                   ) : (
                     <>
                       <UserPlus className='mr-2 h-5 w-5' aria-hidden='true' />
-                      Sign up
+                      Đăng Ký
                     </>
                   )}
 						    </button>
@@ -159,9 +160,9 @@ const handleChange = (e) => {
               </form>
 
               <p className='mt-8 text-center text-sm text-gray-400'>
-                Already have an account?{" "}
+                Đã có tài khoản?{" "}
                 <Link to='/login' className='font-medium text-emerald-400 hover:text-emerald-300'>
-                  Login here <ArrowRight className='inline h-4 w-4' />
+                  Đăng nhập ngay <ArrowRight className='inline h-4 w-4' />
                 </Link>
 					    </p>
           </div>

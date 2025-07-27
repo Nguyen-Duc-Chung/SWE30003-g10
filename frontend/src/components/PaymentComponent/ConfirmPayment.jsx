@@ -48,14 +48,35 @@ const ConfirmPayment = () => {
         }
     };
 
+    // ✅✅✅✅ NEW CODE FOR UPDATE INVENTORY QUANTITIES
+    const updateInventoryQuantities = async () => {
+        try {
+            await axios.post("/products/update-inventory", {
+            cartItems: cart.map(item => ({
+                productId: item._id,
+                quantity: item.quantity,
+            }))
+            });
+        } catch (error) {
+            console.error("Failed to update inventory:", error);
+        }
+    };
 
 
+    // UPDATED CODE: convert VND to USD
+    const convertVNDToUSD = (vnd) => Math.round(vnd / 26144.95);
     const handlePayment = async () => {
         setLoading(true);
         try{
             const stripe = await stripePromise;
+            // Convert product prices from VND to USD before sending
+            const convertedCart = cart.map((item) => ({
+                ...item,
+                price: convertVNDToUSD(item.price), // Convert to USD
+            }));
+
             const res = await axios.post("/payments/create-checkout-session", {
-                products: cart,
+                products: convertedCart,
             });
 
             // UPDATE CODE PART - 🧾 Create invoice before redirect
@@ -98,7 +119,7 @@ const ConfirmPayment = () => {
             </div>
             <div className="flex justify-between items-center mb-2 text-base">
                 <span className="text-gray-500">Tổng tiền hàng</span>
-                <span className="text-gray-800 font-medium"> {formattedTotal || "..." } đ </span>
+                <span className="text-gray-800 font-medium"> {Number(formattedTotal).toLocaleString("vi-VN")} đ </span>
             </div>
             <div className="flex justify-between items-center mb-2 text-base">
                 <span className="text-gray-500">Phí vận chuyển</span>
@@ -111,7 +132,7 @@ const ConfirmPayment = () => {
                 <span className="font-bold text-black">
                 Tổng tiền
                 </span>
-                <span className="font-bold text-black text-xl"> {formattedTotal || "..." } đ </span>
+                <span className="font-bold text-black text-xl"> {Number(formattedTotal).toLocaleString("vi-VN")} đ </span>
             </div>
         </div>
 
@@ -159,13 +180,14 @@ const ConfirmPayment = () => {
             <span className="text-md font-semibold text-gray-900">
                 Tổng tiền tạm tính:
             </span>
-            <span className="text-md font-bold text-red-600"> {formattedTotal || "..." } đ </span>
+            <span className="text-md font-bold text-red-600"> {Number(formattedTotal).toLocaleString("vi-VN")} đ </span>
             </div>
             <button
             className="w-full bg-red-600 hover:bg-red-700 transition-colors duration-150 text-white text-md font-normal rounded-lg py-1"
             onClick={async () => {
                 if (selectedMethod === 0) {
                     await handleInvoiceCreation(); // 🧾 Save invoice for cash method
+                    await updateInventoryQuantities(); // ✅✅ NEW CODE: Reduce inventory for cash
                     navigate('/purchase-success');
                 } else if (selectedMethod === 1) {
                     handlePayment();
