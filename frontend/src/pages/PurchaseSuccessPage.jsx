@@ -57,30 +57,30 @@ const PurchaseSuccessPage = () => {
 				<div className='max-w-md w-full mx-auto bg-gray-800 rounded-lg shadow-xl overflow-hidden relative z-10 m-4 '>
 					<div className='p-3 sm:p-5'>
 						<div className='flex justify-center'>
-							<CheckCircle className='text-emerald-400 w-12 h-12 mb-2' />
+							<CheckCircle className='text-[#88D9F2] w-12 h-12 mb-2' />
 						</div>
-						<h1 className='text-2xl sm:text-3xl font-bold text-center text-emerald-400 mb-2'>
+						<h1 className='text-2xl sm:text-3xl font-bold text-center text-[#88D9F2] mb-2'>
 							Mua hàng thành công!
 						</h1>
 
-						<p className='text-gray-300 text-center mb-2'>
-							Cảm ơn bạn đã đặt hàng. {"Chúng tôi"} đang xử lý đơn hàng.
-						</p>
-						<p className='text-emerald-400 text-center text-sm mb-6'>
+
+						<p className='text-white text-center text-sm mb-6'>
 							Kiểm tra email của bạn để biết thông tin chi tiết về đơn hàng và cập nhật.
 						</p>
 
 						<div className='space-y-4'>
 							<button
-								className='w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-4
-				rounded-lg transition duration-300 flex items-center justify-center'
+							className='w-full font-bold py-2 px-4
+							text-white bg-[#52b0cd] 
+                            hover:bg-white hover:text-[#001543] duration-450 
+				              rounded-lg transition flex items-center justify-center'
 							>
 								<HandHeart className='mr-2' size={18} />
 								Cảm ơn bạn đã tin tưởng chúng tôi!
 							</button>
 							<Link
 								to={"/"}
-								className='w-full bg-gray-700 hover:bg-gray-600 text-emerald-400 font-bold py-2 px-4 
+								className='w-full bg-gray-700 hover:bg-gray-600 text-[#52b0cd] font-bold py-2 px-4 
 				rounded-lg transition duration-300 flex items-center justify-center'
 							>
 								Tiếp tục mua sắm

@@ -24,7 +24,7 @@ const Invoice = () => {
               <div className="w-6 h-6 border border-white rounded"></div>
             </div>
             <div>
-              <div className=" text-[35px] text-emerald-500 font-bold tracking-wider leading-4">Long Chau</div>
+              <div className=" text-[35px] text-[#88D9F2] font-bold tracking-wider leading-4">Long Chau</div>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@ const Invoice = () => {
             </div>
           </div>
           <div className="flex flex-col items-end">
-            <div className="text-[35px] font-bold text-emerald-500 mb-1">Hóa Đơn</div>
+            <div className="text-[35px] font-bold text-[#60c0dd] mb-1">Hóa Đơn</div>
             <div className="text-[14px] font-bold leading-5 flex flex-col gap-1">
               <div>
                 <span className="text-[#222] font-bold">Hóa Đơn Số:</span>
@@ -74,23 +74,24 @@ const Invoice = () => {
           <div className="flex w-full bg-[#14213d] rounded-t-[6px] overflow-hidden text-white text-[15px] font-semibold">
             <div className="w-[60px] px-3 py-2 text-center">STT</div>
             <div className="flex-1 px-3 py-2">Mô tả sản phẩm</div>
-            <div className="w-[92px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">Giá</div>
-            <div className="w-[54px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">S.Lượng</div>
-            <div className="w-[80px] px-3 py-2 text-center bg-emerald-500 text-[#14213d]">Thành Tiền</div>
+            <div className="w-[92px] px-3 py-2 text-center bg-[#60c0dd] text-[#14213d]">Giá</div>
+            <div className="w-[80px] px-3 py-2 text-center bg-[#60c0dd] text-[#14213d]">S.Lượng</div>
+            <div className="w-[150px] px-3 py-2 text-center bg-[#60c0dd] text-[#14213d]">Thành Tiền</div>
           </div>
 
           {invoiceData?.cartItems?.map((item, i) => (
             <div
               key={i}
-              className={`flex w-full text-[15px] ${i % 2 === 0 ? "bg-[#f6f6f6]" : "bg-white"}`}
+              className={`flex w-full text-[15px]  bg-[#f6f6f6]"
+                 ${i % 2 === 0 ? "bg-[#f6f6f6]" : "bg-white" }`}
             >
-              <div className="w-[60px] px-3 py-2 text-center font-medium">
+              <div className="w-[60px] px-3 py-2 text-center font-medium ">
                 {(i + 1).toString().padStart(2, "0") + "."}
               </div>
               <div className="flex-1 px-3 py-2">{item.name}</div>
               <div className="w-[92px] px-3 py-2 text-center">{item.price.toLocaleString()} đ</div>
-              <div className="w-[54px] px-3 py-2 text-center">{item.quantity}</div>
-              <div className="w-[80px] px-3 py-2 text-center">{(item.price * item.quantity).toLocaleString()} đ</div>
+              <div className="w-[80px] px-3 py-2 text-center">{item.quantity}</div>
+              <div className="w-[150px] px-3 py-2 text-center">{(item.price * item.quantity).toLocaleString()} đ</div>
             </div>
           ))}
         </div>
@@ -113,7 +114,7 @@ const Invoice = () => {
               <span className="font-bold">0.00%</span>
             </div>
             <div className="flex justify-end">
-              <div className="flex items-center bg-emerald-500 rounded-lg px-4 py-2 font-semibold text-[18px] text-white shadow-md mt-2">
+              <div className="flex items-center bg-[#60c0dd] rounded-lg px-4 py-2 font-semibold text-[18px] text-white shadow-md mt-2">
                 Tổng tiền: {invoiceData?.totalAmount?.toLocaleString()} đ
               </div>
             </div>

@@ -11,6 +11,7 @@ const ProductCard = ({ product }) => {
 	const { addToCart } = useCartStore();
 	const [prescriptionStatus, setPrescriptionStatus] = useState(null);
 
+	/*
 	const handleAddToCart = () => {
 		if (!user) {
 			toast.error("Please login to add products to cart", { id: "login" });
@@ -19,7 +20,26 @@ const ProductCard = ({ product }) => {
 			// add to cart
 			addToCart(product);
 		}
+	}; */
+
+	//  ✅✅✅✅ NEW CODE
+	const handleAddToCart = () => {
+		if (!user) {
+			toast.error("Please login to add products to cart", { id: "login" });
+			return;
+		}
+
+		const cartItem = useCartStore.getState().cart.find((item) => item._id === product._id);
+		const currentQuantity = cartItem?.quantity || 0;
+
+		if (currentQuantity >= product.Inventory_Quantity) {
+			toast.error("Bạn đã thêm vượt quá số lượng tồn kho!", { id: "overstock" });
+			return;
+		}
+
+		addToCart(product);
 	};
+
 
 	useEffect(() => {
 		const checkPrescription = async () => {
@@ -37,11 +57,14 @@ const ProductCard = ({ product }) => {
 		}
 	}, [product._id, product.requirePrescription, user]);
 
-	 const canPurchase = !product.requirePrescription || prescriptionStatus === "Chấp Thuận";
+	//  ✅✅✅✅ NEW CODE
+	const canPurchase = (!product.requirePrescription || prescriptionStatus === "Chấp Thuận") && product.Inventory_Quantity > 0;
 
 	return (
 		// <Link to={`/productDetail/${product._id}`}>
-			<div className=' bg-gray-800 text-emerald-400 flex w-full h-[400px] relative flex-col justify-between overflow-hidden rounded-lg borde shadow-lg'>
+			<div className=' bg-gray-800 text-white flex w-full h-[400px] 
+			                   relative flex-col justify-between overflow-hidden 
+							   rounded-lg borde shadow-lg cursor-pointer '>
 				<Link to={`/productDetail/${product._id}`}>
 				<div >			
 					<div className='relative mx-2 mt-2 flex h-50 overflow-hidden rounded-xl'>
@@ -63,6 +86,7 @@ const ProductCard = ({ product }) => {
 				</div>
 				</Link>
 
+				{/*
 				<div className='flex-column space-y-1 items-center justify-center px-5 pb-5'>
 					{canPurchase ? (
 					<>			
@@ -74,18 +98,9 @@ const ProductCard = ({ product }) => {
 							<ShoppingCart size={22} className='mr-2' />
 							Thêm vào giỏ
 						</button>
-						<div className="flex items-center w-full justify-center rounded-lg bg-[#878787] px-5 py-2 text-center text-[15px] font-medium
-							text-white focus:outline-none focus:ring-4 " >
-                            <PackageX size={22} className='mr-2' />
-							Sản phẩm hết hàng
-
-						</div>
 					</>
 					) : (
 					<>
-						{/* <div className="text-xs text-red-400 text-center">
-						Cần đơn thuốc được duyệt để mua.
-						</div> */}
 						<Link to={`/productDetail/${product._id}`}>
 						<button
 							className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
@@ -97,7 +112,49 @@ const ProductCard = ({ product }) => {
 						</Link>
 					</>
 					)}
-				</div>
+				</div>	*/}
+                
+				{/*  ✅✅✅✅ NEW CODE */}
+				<div className='flex-column space-y-1 items-center justify-center px-5 pb-5'>
+					{product.Inventory_Quantity > 0 ? (
+						<>
+						{canPurchase ? (
+							<button
+							className='flex items-center w-full justify-center rounded-lg cursor-pointer
+							text-white bg-[#52b0cd] 
+                            hover:bg-white hover:text-[#001543] duration-250 
+							px-5 py-2 text-center text-[15px] font-medium
+						      focus:outline-none focus:ring-4 '
+							onClick={handleAddToCart}
+							>
+							<ShoppingCart size={22} className='mr-2' />
+							Thêm vào giỏ
+							</button>
+						) : (
+							<Link to={`/productDetail/${product._id}`}>
+							<button
+								className='flex items-center w-full justify-center rounded-lg cursor-pointer
+							  text-white bg-[#52b0cd] 
+                              hover:bg-white hover:text-[#001543] duration-250
+								 px-5 py-2 text-center text-[15px] font-medium
+								 focus:outline-none focus:ring-4 focus:ring-emerald-300'
+							>
+								<Eye size={22} className='mr-2' />
+								Xem chi tiết
+							</button>
+							</Link>
+						)}
+						</>
+						) : (
+							<div className="flex items-center w-full justify-center rounded-lg 
+							bg-[#878787] px-5 py-2 text-center text-[15px] font-medium
+							text-white focus:outline-none focus:ring-4 cursor-not-allowed ">
+							<PackageX size={22} className='mr-2' />
+							Sản phẩm hết hàng
+							</div>
+						)}
+					</div>
+
 
 			</div>
 		// </Link>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import { ShoppingCart , Stethoscope } from "lucide-react";
+import { ShoppingCart, Stethoscope, PackageX } from "lucide-react";
 import axios from '../lib/axios';
 import { useProductStore } from '../stores/useProductStore';
 import { useUserStore } from "../stores/useUserStore";
@@ -45,7 +45,8 @@ const ProductDetailPage = () => {
 
   let canPurchase = false;
   if (product) {
-    canPurchase = !product.requirePrescription || prescriptionStatus === 'approved';
+                              //  ✅✅✅✅ NEW CODE
+    canPurchase = (!product.requirePrescription || prescriptionStatus === 'Chấp Thuận') && product.Inventory_Quantity > 0;
   }
 
   useEffect(() => {
@@ -102,6 +103,18 @@ const ProductDetailPage = () => {
                     </dd>
                 </div>
                 <div className="flex">
+                    <dt className="w-32 text-gray-500">Số lượng:</dt>
+                    <dd className="flex-1">
+                      {
+                        product.Inventory_Quantity > 0 ? (
+                          <a href="#" className="text-green-600 hover:underline">Còn {product.Inventory_Quantity} Sản phẩm</a>
+                        ) : (
+                          <a href="#" className="text-red-600 hover:underline">Còn {product.Inventory_Quantity} Sản phẩm</a>
+                        )
+                      }
+                    </dd>    
+                </div>
+                <div className="flex">
                     <dt className="w-32 text-gray-500">Đối tượng sử dụng:</dt>
                     <dd className="flex-1 text-gray-800">
                         {product.subject.join(', ')}
@@ -120,26 +133,63 @@ const ProductDetailPage = () => {
                     <p className="text-gray-800">{product.description}</p>
                 </div>
 
-
+                {/* 
                 {canPurchase ? (
                   <>
-                     <div className="text-sm text-green-600 border border-green-300 bg-green-50 rounded p-3">
-                        Bạn được chấp thuận để mua sản phẩm này.
+                    <div>
+                      <div className="text-sm text-green-600 border border-green-300 bg-green-50 rounded p-3 mb-[5px]">
+                          Bạn được chấp thuận để mua sản phẩm này.
+                        </div>
+                      <div className="flex space-x-4"> 
+                        <button 
+                          className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
+                          text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
+                          onClick={handleAddToCart}
+                        >
+                          <ShoppingCart size={22} className='mr-2' />
+                          Thêm vào giỏ hàng
+                        </button>
                       </div>
-                    <div className="flex space-x-4">
-                      {/* <button className="flex-1 bg-blue-600 text-white py-3 rounded-lg text-lg font-medium">
-                        Chọn mua
-                      </button> */}
-                      <button 
-                        className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
-                        text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
-                        onClick={handleAddToCart}
-                      >
-                        <ShoppingCart size={22} className='mr-2' />
-                        Thêm vào giỏ hàng
-                      </button>
                     </div>
                   </>
+                ) : (
+                  <>
+                    <div className="text-sm text-red-600 border border-red-300 bg-red-50 rounded p-3">
+                      Bạn cần có đơn thuốc được duyệt để mua sản phẩm này.
+                    </div>
+                    <Link to="/prescription" state={{ product }}>
+                      <div className="flex space-x-4 mt-4">
+                        <button
+                          className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
+                          text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
+                        >
+                          <Stethoscope size={22} className='mr-2' />
+                          Gửi Đơn thuốc
+                        </button>
+                      </div>
+                    </Link>
+                  </>
+                )}
+                */}
+                {/*  ✅✅✅✅ NEW CODE */}
+                {product.Inventory_Quantity > 0 ? (
+                  canPurchase ? (
+                    <>
+                      <div className="flex space-x-4">
+                        <button 
+                          className='flex items-center w-full justify-center rounded-lg px-5 py-2 
+                          text-center text-[15px] font-medium focus:outline-none focus:ring-4 
+                          text-white bg-[#52b0cd] 
+                          hover:bg-white hover:text-[#001543] duration-250 
+                            border-2 border-transparent hover:border-[#52b0cd]
+                          '
+                          onClick={handleAddToCart}
+                        >
+                          <ShoppingCart size={22} className='mr-2' />
+                          Thêm vào giỏ hàng
+                        </button>
+                      </div>
+                    </>
                   ) : (
                     <>
                       <div className="text-sm text-red-600 border border-red-300 bg-red-50 rounded p-3">
@@ -148,8 +198,11 @@ const ProductDetailPage = () => {
                       <Link to="/prescription" state={{ product }}>
                         <div className="flex space-x-4 mt-4">
                           <button
-                            className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
-                            text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
+                            className='flex items-center w-full justify-center rounded-lg                              px-5 py-2 text-center text-[15px] font-medium
+                            focus:outline-none focus:ring-4
+                          text-white bg-[#52b0cd] 
+                          hover:bg-white hover:text-[#001543] duration-250 
+                            border-2 border-transparent hover:border-[#52b0cd] '
                           >
                             <Stethoscope size={22} className='mr-2' />
                             Gửi Đơn thuốc
@@ -157,7 +210,16 @@ const ProductDetailPage = () => {
                         </div>
                       </Link>
                     </>
-                  )}
+                  )
+                ) : (
+                  <div className='flex items-center w-full justify-center rounded-lg bg-[#878787] px-5 py-2 text-center text-[15px] font-medium text-white focus:outline-none focus:ring-4'>
+                    <PackageX size={22} className='mr-2' />
+                    Sản phẩm hết hàng
+                  </div>
+                )}
+
+
+
 
               
             </div>

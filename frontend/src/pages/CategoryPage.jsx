@@ -123,7 +123,7 @@ const CategoryPage = () => {
     <div className=' categoryPageContainer min-h-screen' >
       <div className=' productCardDivs relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-3 lg:px-5 py-16'>
 
-        <h1 className='text-center text-4xl sm:text-5xl font-black text-[#2a4427] mb-8 '
+        <h1 className='text-center text-4xl sm:text-5xl font-black text-[#001543] mb-8 '
         style={{ fontFamily: "'Noto Serif', serif" }} 
         >
           {specCategory}
@@ -133,8 +133,8 @@ const CategoryPage = () => {
 
           {/* FILTER SECTION */}
           <div className='
-                  filterDivs  p-4 rounded-md bg-gray-800 text-emerald-400 ' 
-                  // h-[100vh]
+                  filterDivs  p-4 rounded-md bg-[#001543] text-[#88D9F2] ' 
+                  // h-[100vh]   text-[#77D1ED]
           >
             
             {/* Header */}
@@ -164,7 +164,7 @@ const CategoryPage = () => {
                         key={opt.value}
                         onClick={() => setSelectedPrice(opt.value)}
                         className={`w-full text-left py-2 px-3 border rounded-md  transition-colors text-white
-                          ${selectedPrice === opt.value ? 'border-2 border-[#0d9c4d] ' : 'border-white'}`}
+                          ${selectedPrice === opt.value ? 'border-2 border-[#88D9F2] ' : 'border-white'}`}
                       >
                         {opt.label}
                       </button>
@@ -243,9 +243,11 @@ const CategoryPage = () => {
               <div className="mt-4 flex space-x-2">
                 <button
                   onClick={() => setShouldFilter(true)}
-                  className="flex-1 py-2 px-3 rounded-md text-white bg-emerald-600 hover:bg-emerald-700"
+                  className="flex-1 py-2 px-3 rounded-md font-medium 
+                            text-white bg-[#52b0cd] 
+                            hover:bg-white hover:text-[#001543] duration-250 "
                 >
-                  Filter
+                  Lọc
                 </button>
                 <button
                   onClick={() => {
@@ -254,9 +256,9 @@ const CategoryPage = () => {
                     setSelectedTargets(['all']);
                     setShouldFilter(false);
                   }}
-                  className="flex-1 py-2 px-3 rounded-md text-white bg-gray-600 hover:bg-gray-700"
+                  className="flex-1 py-2 px-3 rounded-md text-white bg-gray-600 hover:bg-red-600 duration-200 font-medium"
                 >
-                  Clear Filter
+                  Xóa bộ lọc
                 </button>
               </div>
 

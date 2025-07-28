@@ -27,7 +27,7 @@
 }
 
 
-.sliders-container::before{
+/* .sliders-container::before{
     left: 0;
     background-image: linear-gradient(to right, #b0e9fb , transparent);
 }
@@ -35,7 +35,7 @@
 .sliders-container::after{
     right: 0;
     background-image: linear-gradient(to left, #d7b5ff , transparent);
-}
+} */
 
 @media (max-width: 1110px) {
   :root {

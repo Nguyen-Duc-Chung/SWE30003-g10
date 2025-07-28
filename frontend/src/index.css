@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+.text-block-prescriptionDetails strong{
+    color: #88D9F2 ; 
+}
+
+.test-border{
+    border: 1px solid #52b0cd;
+}
+
+.background{
+    background: #001543;
+}

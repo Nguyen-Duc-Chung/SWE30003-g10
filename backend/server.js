@@ -10,6 +10,7 @@ import paymentRoutes from './routes/payment.route.js'
 import prescriptionRoutes from './routes/prescription.route.js'
 import orderInfoRoutes from './routes/orderInfo.route.js'
 import invoiceRoutes from "./routes/invoice.route.js";
+import analyticsRoutes from "./routes/analytics.route.js"; //✅✅✅✅ NEW CODE
 
 
 import { connectDB } from "./lib/db.js";
@@ -29,6 +30,7 @@ app.use("/api/payments", paymentRoutes);
 app.use("/api/prescriptions", prescriptionRoutes);
 app.use("/api/orderInfo", orderInfoRoutes);
 app.use("/api/invoices", invoiceRoutes);
+app.use("/api/analytics", analyticsRoutes);  //✅✅✅✅ NEW CODE
 
 
 app.listen(5000, () => {

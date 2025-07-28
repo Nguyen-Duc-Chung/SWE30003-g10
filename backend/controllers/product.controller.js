@@ -134,6 +134,8 @@ export const getRecommendedProducts = async (req,res) => {
                     description:1,
                     image: 1,
                     price:1,
+                    Inventory_Quantity: 1, // NEW CODE ✅✅✅ INCLUDE THIS FIELD
+                    requirePrescription: 1 // NEW CODE ✅✅✅ Optional: also needed for ProductCard logic
                 }
             }
         ])
@@ -159,7 +161,6 @@ export const getProductsByCategory = async (req, res) => {
     }
 }
 
-/*//////////////////////// NEW FUNCTION ////////////////////////*/
 export const get_Products_By_Specific_Category = async (req, res) => {
     try{
         const {specific_category} = req.params;

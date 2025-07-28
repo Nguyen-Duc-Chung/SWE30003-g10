@@ -154,7 +154,11 @@ const PrescriptionPage = () => {
           type="button"
           disabled={loading}
           onClick={handleSubmit}
-          className="bg-blue-600 text-white font-semibold w-full py-2 rounded mb-4 disabled:opacity-50"
+          className=" font-semibold w-full py-2 rounded mb-4 disabled:opacity-50
+                          text-white bg-[#52b0cd] 
+                          hover:bg-white hover:text-[#001543] duration-250 
+                            border-2 border-transparent hover:border-[#52b0cd]
+          "
         >
           {loading ? 'Đang gửi...' : 'Gửi Yêu Cầu Tư Vấn'}
         </button>

@@ -37,13 +37,15 @@ function App() {
   }, [getCartItems, user]);
 
   if (checkingAuth) return <LoadingSpinner/>;
+  // console.log(user?.role)
    
   return (
     <>
-    <div className=" min-h-screen  text-white relative overflow-hidden bg-[linear-gradient(90deg,_#b0e9fb_0%,_#fbd2e0_50%,_#d7b5ff_100%)]">
+    {/* bg-[linear-gradient(90deg,_#b0e9fb_0%,_#fbd2e0_50%,_#d7b5ff_100%)] */}
+    <div className=" min-h-screen  text-white relative overflow-hidden ">
       <div className='absolute inset-0 overflow-hidden'>
 				<div className='absolute inset-0'>
-					<div className='absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.3)_0%,rgba(10,80,60,0.2)_45%,rgba(0,0,0,0.1)_100%)]' />
+					<div className='absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.3)_0%,rgba(245,249,252,255)_45%,rgba(0,0,0,0.1)_100%)]' />
 				</div>
 			</div>
 
@@ -53,7 +55,17 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/signup' element={ !user ? <SignUpPage/> : <Navigate to='/'/>} />
             <Route path='/login' element={ !user ? <LoginPage/>  : <Navigate to='/' /> } />
-            <Route path='/secret-dashboard' element={ user?.role === "admin" || user?.role === "pharmacists"  ? < AdminPage /> : <Navigate to='/login' /> } />
+
+            {/*  ✅✅✅✅ NEW CODE */}
+            <Route path='/secret-dashboard' element={ 
+              (user?.role === "Admin" || 
+               user?.role === "Pharmacists" || 
+               user?.role === "Product_Manager" || 
+               user?.role === "Cashiers") 
+                ? < AdminPage /> 
+                : <Navigate to='/login' /> } 
+            />
+                                                      
             <Route path='/category/:category' element= { <CategoryPage /> } />
             <Route path='/specific_Category/:specCategory' element= { <CategoryPage /> } />
             <Route path='/productDetail/:id' element= { <ProductDetailPage/> } />
@@ -68,7 +80,7 @@ function App() {
 
           </Routes>
           <footer className="">
-              <div className="bg-gray-800 py-4 text-gray-400">
+              <div className=" bg-[#001543]  py-4 text-gray-400">
                 <div className="container px-4 mx-auto">
 
                     <div className="-mx-4 flex flex-wrap justify-between">
@@ -76,10 +88,10 @@ function App() {
                       <div className="px-4 my-4 w-full xl:w-1/5">
                         <a href="/" className="block w-56 mb-10">
                           <svg version="1.1" viewBox="0 0 3368 512" xmlns="http://www.w3.org/2000/svg">
-                            <g fill="none" fill-rule="evenodd">
+                            <g className="fill-none">
                               <g transform="translate(0 -75)">
 
-                                <text fill="white" font-family="Nunito-Bold, Nunito" font-size="512" font-weight="bold">
+                                <text className ="fill-white font-bold text-[512px] font-nunito" >
                                   <tspan x="654" y="518">Long Châu</tspan>
                                 </text>
                               </g>
@@ -174,8 +186,6 @@ function App() {
                         </div>
                       </div>
 
-
-                      
                     </div>
 
                 </div>

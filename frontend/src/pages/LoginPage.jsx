@@ -21,7 +21,7 @@ const LoginPage = () => {
     <div className='flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
 
         <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md bg-gray-800  py-8 px-4 shadow sm:rounded-lg sm:px-10 '>
-        <h2 className='my-6 text-center text-3xl font-extrabold text-emerald-400'>Đăng nhập Tài khoản của bạn</h2>
+        <h2 className='my-6 text-center text-3xl font-extrabold text-[#88D9F2] '>Đăng nhập Tài khoản của bạn</h2>
           <form onSubmit={handleSubmit} className='space-y-6'>
               <div>
                   <label htmlFor='email' className='block text-sm font-medium text-gray-300'>
@@ -65,9 +65,8 @@ const LoginPage = () => {
               						<button
 							type='submit'
 							className='w-full flex justify-center py-2 px-4 border border-transparent 
-							rounded-md shadow-sm text-sm font-medium text-white bg-emerald-600
-							 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2
-							  focus:ring-emerald-500 transition duration-150 ease-in-out disabled:opacity-50'
+							rounded-md shadow-sm text-sm font-medium text-white bg-[#52b0cd] hover:bg-[#6dc0d8] focus:outline-none focus:ring-2 focus:ring-offset-2
+							  focus:ring-emerald-500 transition duration-250 ease-in-out disabled:opacity-50'
 							disabled={loading}
 						>
 							{loading ? (
@@ -87,7 +86,7 @@ const LoginPage = () => {
           
 					<p className='mt-8 text-center text-sm text-gray-400'>
 						Không phải thành viên?{" "}
-						<Link to='/signup' className='font-medium text-emerald-400 hover:text-emerald-300'>
+						<Link to='/signup' className='font-medium text-[#52b0cd] hover:text-[#6dc0d8]'>
 							Đăng ký ngay <ArrowRight className='inline h-4 w-4' />
 						</Link>
 					</p>

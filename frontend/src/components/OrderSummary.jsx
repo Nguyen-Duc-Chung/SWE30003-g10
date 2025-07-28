@@ -40,7 +40,7 @@ const OrderSummary = () => {
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
 		>
-			<p className='text-xl font-semibold text-emerald-400'>Chi tiết đơn hàng</p>
+			<p className='text-xl font-semibold text-[#88D9F2] '>Chi tiết đơn hàng</p>
 
 			<div className='space-y-4'>
 				
@@ -83,27 +83,25 @@ const OrderSummary = () => {
 
 
 				<div className='space-y-2'>
-					{/* <dl className='flex items-center justify-between gap-4'>
-						<dt className='text-base font-normal text-gray-300'>Original price</dt>
-						<dd className='text-base font-medium text-white'> {Number(formattedSubtotal).toLocaleString("vi-VN")} đ </dd>
-					</dl> */}
-
 					{savings > 0 && (
 						<dl className='flex items-center justify-between gap-4'>
 							<dt className='text-base font-normal text-gray-300'>Savings</dt>
-							<dd className='text-base font-medium text-emerald-400'>-{Number(formattedSavings).toLocaleString("vi-VN")} đ </dd>
+							<dd className='text-base font-medium text-[#88D9F2]'>-{Number(formattedSavings).toLocaleString("vi-VN")} đ </dd>
 						</dl>
 					)}
 
 					<dl className='flex items-center justify-between gap-4 border-t border-gray-600 pt-2'>
 						<dt className='text-base font-bold text-white'>Tổng Tiền</dt>
-						<dd className='text-base font-bold text-emerald-400'> {Number(formattedTotal).toLocaleString("vi-VN")} đ </dd>
+						<dd className='text-base font-bold text-[#88D9F2] '> {Number(formattedTotal).toLocaleString("vi-VN")} đ </dd>
 					</dl>
 				</div>
 
 				<Link to='/payment' >
 					<motion.button
-						className='flex w-full items-center justify-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
+						className='flex w-full items-center justify-center rounded-lg
+						text-white bg-[#52b0cd] 
+                        hover:bg-white hover:text-[#001543] duration-250 
+						  px-5 py-2.5 text-sm font-medium  focus:outline-none focus:ring-4'
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 						// onClick={handlePayment}
@@ -112,11 +110,11 @@ const OrderSummary = () => {
 					</motion.button>
 				</Link>
 
-				<div className='flex items-center justify-center gap-2'>
+				<div className='flex items-center justify-center gap-2 mt-2 '>
 					<span className='text-sm font-normal text-gray-400'>Hoặc</span>
 					<Link
 						to='/'
-						className='inline-flex items-center gap-2 text-sm font-medium text-emerald-400 underline hover:text-emerald-300 hover:no-underline'
+						className='inline-flex items-center gap-2 text-sm font-medium underline text-[#52b0cd] hover:no-underline'
 					>
 						Tiếp tục mua sắm
 						<MoveRight size={16} />
