@@ -59,7 +59,8 @@ export const createProduct = async (req, res) => {
 
         const { brand,name, description, price, category,
                 specific_category, image, manufacturing_country, 
-                requirePrescription, subject, Inventory_Quantity // ✅✅✅✅ Thêm Inventory_Quantity
+                requirePrescription, subject,
+                Inventory_Quantity , medicine_component // ✅✅✅✅ Thêm Inventory_Quantity , medicine_component
             } = req.body;
 
         let cloudinaryResponse = null;
@@ -79,7 +80,8 @@ export const createProduct = async (req, res) => {
             manufacturing_country,
             requirePrescription,
             subject,
-            Inventory_Quantity // ✅✅✅✅ Thêm Inventory_Quantity
+            Inventory_Quantity, // ✅✅✅✅ Thêm Inventory_Quantity
+            medicine_component, // ✅✅✅✅ Thêm medicine_component
         });
 
         res.status(201).json(product);

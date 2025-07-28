@@ -127,9 +127,13 @@ const ProductDetailPage = () => {
                     </dd>
                 </div>
 
-
                 <div className="w-full text-gray-500">
-                    <span className="font-semibold">Mô tả:</span>
+                    <span className="font-semibold text-[18px] ">Thành phần:</span>
+                    <p className="text-gray-800">{product.medicine_component}</p>
+                </div>
+
+                <div className="w-full text-gray-500 ">
+                    <span className="font-semibold text-[18px]  ">Mô tả:</span>
                     <p className="text-gray-800">{product.description}</p>
                 </div>
 

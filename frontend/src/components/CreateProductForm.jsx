@@ -30,6 +30,7 @@ const CreateProductForm = () => {
     image: "",
     manufacturing_country: "",
     requirePrescription: "no",
+    medicine_component: "", // ✅✅✅✅ Thêm dòng này
   });
   const [selectedSubjects, setSelectedSubjects] = useState([]);
 
@@ -44,7 +45,7 @@ const CreateProductForm = () => {
     await createProduct({...newProduct, subject: selectedSubjects });
     setNewProduct({name: "", description: "", price: 0, category: "", specific_category: "", 
                    brand: "", image: "", manufacturing_country: "", requirePrescription: "",
-                   Inventory_Quantity: "" // ✅✅✅✅ Thêm dòng này
+                   Inventory_Quantity: "", medicine_component: "" // ✅✅✅✅ Thêm dòng này
     });
     setSelectedSubjects([]);
 
@@ -124,8 +125,21 @@ const CreateProductForm = () => {
           </div>
 
           <div>
-              <label htmlFor='description' className='block text-sm font-medium text-gray-300'>
+              <label htmlFor='medicine_component' className='block text-sm font-medium text-gray-300'>
                 Thành Phần
+              </label>
+              <textarea
+                id='medicine_component' name='medicine_component'
+                value={newProduct.medicine_component}
+                onChange={(e) => setNewProduct({ ...newProduct, medicine_component: e.target.value })}
+                rows='3'
+                className='mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500   focus:border-emerald-500'
+              />
+				  </div>
+
+          <div>
+              <label htmlFor='description' className='block text-sm font-medium text-gray-300'>
+                Mô Tả Sản Phẩm
               </label>
               <textarea
                 id='description' name='description'
