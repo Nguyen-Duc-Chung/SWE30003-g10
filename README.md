@@ -1,13 +1,27 @@
-# Instruction to Deploy and Run the Long Chau Pharmacy Project
+# 🚀 How to Deploy & Run the **Long Châu Pharmacy Management System**
+
+## 📌 Prerequisites
+Make sure you have installed:
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [MongoDB Compass](https://www.mongodb.com/products/tools/compass)
+
+> 💡 If not installed, follow this tutorial: [Watch on YouTube](https://youtu.be/jvaBaxlTqU8?si=kgnqJeNO1tA5jlnd)
+
+---
+
+## 1️⃣ Clone the Project
+```bash
+git clone https://github.com/Nguyen-Duc-Chung/SWE30003-g10.git
+
 
 1. Clone this project github's link : 
 ```bash
 https://github.com/Nguyen-Duc-Chung/SWE30003-g10.git 
 ```
 
-2. Create an **.env** file in `LongChauProject` root directory
+2. Create an `**.env**` file in `LongChauProject` root directory
 
-3. Copy the text below into **.env** file:
+3. Copy the text below into  **.env** file:
 
 ```bash
 PORT = 5000
