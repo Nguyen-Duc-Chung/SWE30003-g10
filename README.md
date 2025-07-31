@@ -5,7 +5,7 @@ Make sure you have installed:
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [MongoDB Compass](https://www.mongodb.com/products/tools/compass)
 
-> 💡 If not installed, follow this tutorial: [Watch on YouTube](https://youtu.be/jvaBaxlTqU8?si=kgnqJeNO1tA5jlnd)
+> 💡 If not installed, follow this tutorial (For MongoDB Compass): [Watch on YouTube](https://youtu.be/jvaBaxlTqU8?si=kgnqJeNO1tA5jlnd)
 
 ---
 
@@ -38,7 +38,7 @@ STRIPE_SECRET_KEY = sk_test_51RNDbxFRT31SpY0BjpL0lJjSTxB5NXWxB9uOshudt7dPtAHMCcw
 
 ```
 
-## 4. Open Terminal , In **LongChauProject** directory ennter this command:
+## 4. Open Terminal , In `LongChauProject` directory ennter this command:
 ```bash
     npm install
 ```
@@ -48,12 +48,12 @@ STRIPE_SECRET_KEY = sk_test_51RNDbxFRT31SpY0BjpL0lJjSTxB5NXWxB9uOshudt7dPtAHMCcw
     npm start
 ```
 
-## 6. Open new Terminal , naviagte to **LongChauProject/frontend** directory :
+## 6. Open new Terminal , naviagte to `LongChauProject/frontend` directory :
 ```bash
     cd frontend
 ```
 
-## 7. Start the frontend deveLOPMENT:
+## 7. Start the Frontend Development:
 ```bash
     npm run dev
 ```
