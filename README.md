@@ -5,9 +5,9 @@
 https://github.com/Nguyen-Duc-Chung/SWE30003-g10.git 
 ```
 
-2. Create an <h4 style="display:inline;">.env</h4> file in `LongChauProject` root directory
+2. Create an **.env** file in `LongChauProject` root directory
 
-3. Copy the text below into  <h4 style="display:inline;">.env</h4> file:
+3. Copy the text below into **.env** file:
 
 ```bash
 PORT = 5000
@@ -28,7 +28,7 @@ STRIPE_SECRET_KEY = sk_test_51RNDbxFRT31SpY0BjpL0lJjSTxB5NXWxB9uOshudt7dPtAHMCcw
 
 ```
 
-4. Open Terminal , In ** LongChauProject ** directory ennter this command:
+4. Open Terminal , In **LongChauProject** directory ennter this command:
 ```bash
     npm install
 ```
@@ -38,7 +38,7 @@ STRIPE_SECRET_KEY = sk_test_51RNDbxFRT31SpY0BjpL0lJjSTxB5NXWxB9uOshudt7dPtAHMCcw
     npm start
 ```
 
-5. Open new Terminal , naviagte to ** LongChauProject/frontend ** directory :
+5. Open new Terminal , naviagte to **LongChauProject/frontend** directory :
 ```bash
     cd frontend
 ```
