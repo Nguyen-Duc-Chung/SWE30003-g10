@@ -13,15 +13,11 @@ Make sure you have installed:
 ```bash
 git clone https://github.com/Nguyen-Duc-Chung/SWE30003-g10.git
 
-
-1. Clone this project github's link : 
-```bash
-https://github.com/Nguyen-Duc-Chung/SWE30003-g10.git 
 ```
 
-2. Create an `**.env**` file in `LongChauProject` root directory
+## 2. Create an `.env` file in `LongChauProject` root directory
 
-3. Copy the text below into  **.env** file:
+## 3. Copy the following content into  **.env** file:
 
 ```bash
 PORT = 5000
@@ -42,27 +38,27 @@ STRIPE_SECRET_KEY = sk_test_51RNDbxFRT31SpY0BjpL0lJjSTxB5NXWxB9uOshudt7dPtAHMCcw
 
 ```
 
-4. Open Terminal , In **LongChauProject** directory ennter this command:
+## 4. Open Terminal , In **LongChauProject** directory ennter this command:
 ```bash
     npm install
 ```
 
-6. Enter this command to start backend server:
+## 5. Enter this command to start backend server:
 ```bash
     npm start
 ```
 
-5. Open new Terminal , naviagte to **LongChauProject/frontend** directory :
+## 6. Open new Terminal , naviagte to **LongChauProject/frontend** directory :
 ```bash
     cd frontend
 ```
 
-6. Start the frontend deveLOPMENT:
+## 7. Start the frontend deveLOPMENT:
 ```bash
     npm run dev
 ```
 
-7. Open  Browser (Google Chrome recommended) and go to:
+## 8. Open  Browser (Google Chrome recommended) and go to:
 ```bash
     http://localhost:5173
 ```
