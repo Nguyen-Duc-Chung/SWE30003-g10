@@ -4,6 +4,7 @@
 Make sure you have installed:
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [MongoDB Compass](https://www.mongodb.com/products/tools/compass)
+- [NodeJS](https://nodejs.org/en/download)
 
 > 💡 If not installed, follow this tutorial (For MongoDB Compass): [Watch on YouTube](https://youtu.be/jvaBaxlTqU8?si=kgnqJeNO1tA5jlnd)
 
