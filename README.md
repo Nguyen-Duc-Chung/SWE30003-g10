@@ -62,4 +62,8 @@ STRIPE_SECRET_KEY = sk_test_51RNDbxFRT31SpY0BjpL0lJjSTxB5NXWxB9uOshudt7dPtAHMCcw
 ## 8. Open  Browser (Google Chrome recommended) and go to:
 ```bash
     http://localhost:5173
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 0a8f061d9764b279c401fe566f6733a1e208a06d
