@@ -89,7 +89,12 @@ export const createProduct = async (req, res) => {
 
     }catch (error){
         console.log("Error in createProduct controller", error.message);
-        res.status(500).json({message: error.message});
+        // Check for Mongoose validation error
+        if (error.name === "ValidationError") {
+            const messages = Object.values(error.errors).map(err => err.message).join(", ");
+            return res.status(400).json({ error: messages });
+        }
+        res.status(500).json({ error: error.message || "Failed to create product" });
     }
 };
 

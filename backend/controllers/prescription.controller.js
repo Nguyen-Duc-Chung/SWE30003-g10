@@ -6,13 +6,30 @@ export const createPrescription = async (req, res) => {
     // console.log("Incoming request body:", req.body);
     // console.log("Authenticated user:", req.user);
 
+    
     const { fullName, phoneNumber, note, image, productId } = req.body;
 
+    /*
     // Validate required fields
     if (!fullName || !phoneNumber || !image || !productId) {
       console.warn("Missing fields:", { fullName, phoneNumber, image, productId });
       return res.status(400).json({ message: "Missing required fields" });
-    }
+    } */
+   
+      // UPDATE Validate required fields
+      let missingFields = [];
+
+      if (!fullName) missingFields.push("Họ và Tên");
+      if (!phoneNumber) missingFields.push("Số điện thoại");
+      if (!image) missingFields.push("Hình ảnh");
+      if (!productId) missingFields.push("ID sản phẩm");
+
+      if (missingFields.length > 0) {
+        console.warn("Missing fields:", missingFields);
+        return res.status(400).json({ 
+          message: `Vui lòng điền thông tin: ${missingFields.join(", ")}`
+        });
+      }
 
     // Upload image
     let cloudinaryResponse = null;

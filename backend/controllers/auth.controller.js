@@ -40,7 +40,7 @@ export const signup = async (req, res) =>{
     const userExists = await User.findOne({ email});
 
     if(userExists) {
-        return res.status(400).json({message: "User already exists"});
+        return res.status(400).json({message: "Tài khoản Email đã tồn tại"});
     }
     
     const user = await User.create( { email, password, name , phoneNumber });
@@ -86,7 +86,7 @@ export const login = async (req, res) => {
               role: user.role,
            })
         } else {
-            res.status(400).json({message: "Invalid email or password"});
+            res.status(400).json({message: "Mật khẩu hoặc Email không đúng"});
         }
     } catch (err) {
         console.log("Error in login controller", err.message);

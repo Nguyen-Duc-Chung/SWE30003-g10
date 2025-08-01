@@ -16,6 +16,9 @@ const SignUpPage = () => {
   }
 );
 
+console.log("Password",formData.password);
+console.log("Confirm Password", formData.confirmPassword);
+
 const handleChange = (e) => {
   setFormData((prev)=>(
     {
@@ -70,7 +73,7 @@ const handleChange = (e) => {
                         </div>
                         <input
                           id='phoneNumber'
-                          type='text'
+                          type='number'
                           required
                           value={formData.phoneNumber}
                           onChange={handleChange}

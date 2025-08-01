@@ -12,12 +12,13 @@ export const useUserStore = create((set, get) => ({
 
         if(password !== confirmPassword){
             set({loading: false})
-            return toast.error("Passwrod do not match")
+            return toast.error("Mật Khẩu Không Trùng Khớp");
         }
 
         try{
             const res = await axios.post("/auth/signup", {name, email, password , phoneNumber });
              set({ user: res.data, loading: false }) 
+             toast.success("Tạo Tài Khoản Thành Công");
 
         } catch(error) {
             set({loading: false});
@@ -32,10 +33,11 @@ export const useUserStore = create((set, get) => ({
         try {
             const res = await axios.post("/auth/login", {email , password});
             set({ user: res.data, loading: false });
+            toast.success("Đăng Nhập Thành Công");
             // console.log(res.data);
         } catch(error) {
             set({ loading: false });
-            toast.error(error.response.data.message || "An error occurred" );
+            toast.error(error.response.data.message || "Đã xảy ra lỗi" );
         }
     },
 
@@ -44,7 +46,7 @@ export const useUserStore = create((set, get) => ({
             await axios.post("/auth/logout");
             set({user: null});
         } catch(error){
-            toast.error(error.response?.data?.message || "An error occurred during logout");
+            toast.error(error.response?.data?.message || "Đã xảy ra lỗi trong quá trình đăng xuất");
         }
         
 

@@ -1,5 +1,6 @@
 import { Minus, Plus, Trash } from "lucide-react";
 import { useCartStore } from "../stores/useCartStore";
+import toast from "react-hot-toast";
 
 // In Cart Page
 const CartItem = ({item}) => {

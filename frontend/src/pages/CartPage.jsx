@@ -56,8 +56,8 @@ const EmptyCartUI = () => (
 		transition={{ duration: 0.5 }}
 	>
 		<ShoppingCart className='h-24 w-24 text-[#ff98e8] ' />
-		<h3 className='text-4xl font-semibold text-[#ff98e8] '>Your cart is empty</h3>
-		<p className='text-gray-400 text-2xl'>Looks like you {"haven't"} added anything to your cart yet.</p>
+		<h3 className='text-4xl font-semibold text-[#ff98e8] '>Giỏ hàng của bạn đang trống</h3>
+		<p className='text-gray-400 text-2xl'>Có vẻ như bạn chưa thêm bất kỳ sản phẩm nào vào giỏ hàng.</p>
 		<Link
 			className='mt-4 rounded-md px-6 py-2  transition-colors font-medium
 			         text-white bg-[#52b0cd] 
@@ -66,7 +66,7 @@ const EmptyCartUI = () => (
 			'
 			to='/'
 		>
-			Start Shopping
+			Bắt đầu mua sắm
 		</Link>
 	</motion.div>
 );

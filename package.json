@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce",
+  "name": "pharmacybackend",
   "version": "1.0.0",
   "main": "backend/server.js",
   "scripts": {

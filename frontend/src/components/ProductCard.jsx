@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
 	//  ✅✅✅✅ NEW CODE
 	const handleAddToCart = () => {
 		if (!user) {
-			toast.error("Please login to add products to cart", { id: "login" });
+			toast.error("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng", { id: "login" });
 			return;
 		}
 
@@ -85,34 +85,6 @@ const ProductCard = ({ product }) => {
 
 				</div>
 				</Link>
-
-				{/*
-				<div className='flex-column space-y-1 items-center justify-center px-5 pb-5'>
-					{canPurchase ? (
-					<>			
-						<button
-							className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
-							text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
-							onClick={handleAddToCart}
-						>
-							<ShoppingCart size={22} className='mr-2' />
-							Thêm vào giỏ
-						</button>
-					</>
-					) : (
-					<>
-						<Link to={`/productDetail/${product._id}`}>
-						<button
-							className='flex items-center w-full justify-center rounded-lg bg-emerald-600 px-5 py-2 text-center text-[15px] font-medium
-							text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300'
-						>
-							<Eye size={22} className='mr-2' />
-							Xem chi tiết
-						</button>
-						</Link>
-					</>
-					)}
-				</div>	*/}
                 
 				{/*  ✅✅✅✅ NEW CODE */}
 				<div className='flex-column space-y-1 items-center justify-center px-5 pb-5'>

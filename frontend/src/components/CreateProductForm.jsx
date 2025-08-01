@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PlusCircle, Upload, Loader } from "lucide-react";
 import  { useProductStore } from "../stores/useProductStore"; 
-
+import toast from "react-hot-toast";
         
 import '../style/abc.css';
 
@@ -40,7 +40,33 @@ const CreateProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(newProduct);
+      // console.log(newProduct);
+        // Validation checks
+    if (!newProduct.brand.trim()) {
+      return toast.error("Bạn đã Bỏ Trống mục Thương hiệu");
+    } else if (!newProduct.name.trim()) {
+      return toast.error("Bạn đã Bỏ Trống mục Tên sản phẩm");
+    } else if (!newProduct.medicine_component.trim()) {
+      return toast.error("Bạn đã Bỏ Trống mục Thành phần");
+    } else if (!newProduct.description.trim()) {
+      return toast.error("Bạn đã Bỏ Trống mục Mô tả sản phẩm");
+    } else if (!newProduct.price || newProduct.price <= 0) {
+      return toast.error("Bạn đã Bỏ Trống hoặc Nhập Sai mục Giá");
+    } else if (!newProduct.Inventory_Quantity || newProduct.Inventory_Quantity <= 0) {
+      return toast.error("Bạn đã Bỏ Trống hoặc Nhập Sai mục Số lượng");
+    } else if (!newProduct.category.trim()) {
+      return toast.error("Bạn đã Bỏ Trống mục Phân loại");
+    } else if (!newProduct.specific_category.trim()) {
+      return toast.error("Bạn đã Bỏ Trống mục Phân loại chi tiết");
+    } else if (selectedSubjects.length === 0) {
+      return toast.error("Bạn chưa chọn Đối tượng sử dụng");
+    } else if (!newProduct.manufacturing_country.trim()) {
+      return toast.error("Bạn đã Bỏ Trống mục Nước sản xuất");
+    } else if (!newProduct.requirePrescription.trim()) {
+      return toast.error("Bạn đã Bỏ Trống mục Yêu cầu kê đơn");
+    } else if (!newProduct.image) {
+      return toast.error("Bạn đã Bỏ Trống mục Ảnh sản phẩm");
+    }
     try{
     await createProduct({...newProduct, subject: selectedSubjects });
     setNewProduct({name: "", description: "", price: 0, category: "", specific_category: "", 
