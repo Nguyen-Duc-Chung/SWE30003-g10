@@ -1,5 +1,17 @@
-import { Navigate , Route, Routes } from "react-router-dom"
+/**
+ * Project Group 10 
+ * Long Chau Pharmacy Management System (LC-PMS)
+ * Assignment: SWE30003 - Case Study Implementation
+ * 
+ * Coding Standard: Airbnb JavaScript Style Guide
+ * Reference: https://airbnb.io/javascript/
+ * 
+ * This project follows the Airbnb JavaScript Style Guide to ensure
+ * consistency, readability, and maintainability in code structure.
+ */
 
+
+import { Navigate , Route, Routes } from "react-router-dom"
 import HomePage from "./pages/HomePage.jsx" ;
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";

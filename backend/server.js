@@ -1,3 +1,15 @@
+/**
+ * Project Group 10 
+ * Long Chau Pharmacy Management System (LC-PMS)
+ * Assignment: SWE30003 - Case Study Implementation
+ * 
+ * Coding Standard: Airbnb JavaScript Style Guide
+ * Reference: https://airbnb.io/javascript/
+ * 
+ * This project follows the Airbnb JavaScript Style Guide to ensure
+ * consistency, readability, and maintainability in code structure.
+ */
+
 import express from "express"
 import 'dotenv/config'
 import cookieParser from 'cookie-parser'
